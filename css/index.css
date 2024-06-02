@@ -1,0 +1,97 @@
+body {
+    touch-action: manipulation;
+    user-select: none;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    max-width: 800px;
+    min-height: 650px;
+    background-color: rgba(51, 43, 153, 0.708);
+    margin: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+.content-box {
+    border-radius: 10px;
+    position: relative;
+    width: 80%;
+    height: 30%;
+    top: 15%;
+    background-color: rgba(172, 190, 243, 0.808);
+}
+.text-box {
+    font-weight: bold;
+    position: absolute;
+}
+#title {
+    width: 90%;
+    text-align: center;
+    font-size: 25px;
+    top: 40%;
+    left: 5%;
+}
+#content {
+    display: none;
+    width: 80%;
+    font-weight: bold;
+    font-size: 20px;
+    top: 20%;
+    left: 10%;
+    line-height: 40px;
+}
+#character {
+    display: none;
+    width: 90%;
+    text-align: center;
+    font-size: 25px;
+    top: 40%;
+    left: 5%;
+}
+.btn {
+    position: absolute;
+    display: none;
+    width: 65%;
+    font-size: 12px;
+    height: 50px;
+    border-radius: 10px;
+}
+.btn:hover {
+    cursor: pointer;
+}
+#start-btn {
+    display: block;
+    width: 30%;
+    min-height: 10%;
+    max-width: 200px;
+    max-height: 100px;
+    min-width: 100px;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    bottom: 20%;
+}
+#btn1 {
+    top: 55%;
+}
+#btn2 {
+    top: 65%;
+}
+#btn3 {
+    top: 75%;
+}
+#btn4 {
+    top: 85%;
+}
+#restart-btn {
+    width: 30%;
+    min-height: 10%;
+    max-width: 200px;
+    max-height: 100px;
+    min-width: 100px;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    bottom: 20%;
+}
