@@ -1,10 +1,11 @@
 import { questions } from './questions.js';
 
 window.onload = function(){
-    const $startBtn = document.querySelector("#start-btn");
     const $title = document.querySelector("#title");
+    const $contentBox = document.querySelector("#content-box");
     const $content = document.querySelector("#content");
     const $character = document.querySelector("#character");
+    const $startBtn = document.querySelector("#start-btn");
     const $btn1 = document.querySelector("#btn1");
     const $btn2 = document.querySelector("#btn2");
     const $btn3 = document.querySelector("#btn3");
@@ -13,7 +14,7 @@ window.onload = function(){
 
     let currentQuestion = -1;
 
-    let attributes = {
+    const attributes = {
         adventure: 0,
         social: 0,
         creativity: 0,
@@ -23,9 +24,10 @@ window.onload = function(){
     };
 
     function start(){
-        $startBtn.style.display = "none";
         $title.style.display = "none";
+        $startBtn.style.display = "none";
 
+        $contentBox.style.display = "block";
         $content.style.display = "block";
         $btn1.style.display = "block";
         $btn2.style.display = "block";
