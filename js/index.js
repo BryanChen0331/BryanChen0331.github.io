@@ -1,5 +1,34 @@
 import { questions } from './questions.js';
 
+let currentQuestion = -1;
+
+const attributes = {
+    adventure: 0,
+    social: 0,
+    creativity: 0,
+    strategy: 0,
+    emotion: 0,
+    intuition: 0
+};
+
+function generateCharacter(attributes) {
+    const attributeToCharacter = {
+        adventure: "DJ章魚",
+        social: "人騎海馬",
+        creativity: "健力龍蝦",
+        strategy: "河豚",
+        emotion: "墨鏡海豚",
+        intuition: "水母"
+    };
+
+    const max_value = Math.max(...Object.values(attributes));
+    const highest_attributes = Object.keys(attributes).filter(attr => attributes[attr] === max_value);
+    const selected_attribute = highest_attributes[Math.floor(Math.random() * highest_attributes.length)];
+    const character = attributeToCharacter[selected_attribute];
+    
+    return character;
+}
+
 window.onload = function(){
     const $title = document.querySelector("#title");
     const $contentBox = document.querySelector("#content-box");
@@ -11,17 +40,6 @@ window.onload = function(){
     const $btn3 = document.querySelector("#btn3");
     const $btn4 = document.querySelector("#btn4");
     const $restartBtn = document.querySelector("#restart-btn");
-
-    let currentQuestion = -1;
-
-    const attributes = {
-        adventure: 0,
-        social: 0,
-        creativity: 0,
-        strategy: 0,
-        emotion: 0,
-        intuition: 0
-    };
 
     function start(){
         $title.style.display = "none";
@@ -63,24 +81,6 @@ window.onload = function(){
             showResult();
         }
     }
-
-    function generateCharacter(attributes) {
-        const attributeToCharacter = {
-            adventure: "DJ章魚",
-            social: "人騎海馬",
-            creativity: "健力龍蝦",
-            strategy: "河豚",
-            emotion: "墨鏡海豚",
-            intuition: "水母"
-        };;
-    
-        const max_value = Math.max(...Object.values(attributes));
-        const highest_attributes = Object.keys(attributes).filter(attr => attributes[attr] === max_value);
-        const selected_attribute = highest_attributes[Math.floor(Math.random() * highest_attributes.length)];
-        const character = attributeToCharacter[selected_attribute];
-        
-        return character;
-    }    
 
     function showResult(){
         $content.style.display = "none";
