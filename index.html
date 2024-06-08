@@ -9,19 +9,35 @@
     <script type="module" src="/js/index.js"></script>
 </head>
 <body>
-    <div class="container">
-        <video id="bg" src="/src/bg.mp4" autoplay muted loop playsinline></video>
-        <img id="title" src="/src/title.png" alt="">
-        <div id="content-box">
-            <p id="content" class="text-box"></p>
-            <p id="character" class="text-box"></p>
+    <div id="main-container" class="container">
+        <video id="bg" src="/src/bg1.mp4" autoplay muted loop playsinline></video>
+        <img id="result" class="hidden" src="" alt="result">
+        <div id="username" class="hidden"></div>
+        <img id="mask" class="hidden" src="/src/mask1.png" alt="">
+        <div id="cutscene" class="hidden">
+            <div id="cutscene-bg"></div>
+            <img id="bubble" src="/src/buble.png" alt="bubble">
         </div>
-        <div id="start-btn" class="btn"></div>
-        <button id="btn1" class="btn option-btn"></button>
-        <button id="btn2" class="btn option-btn"></button>
-        <button id="btn3" class="btn option-btn"></button>
-        <button id="btn4" class="btn option-btn"></button>
-        <button id="restart-btn" class="btn">再玩一次</button>
+        <img id="text" class="hidden" src="/src/text.png" alt="">
+        <div id="input-container" class="container hidden">
+            <img id="input-img" src="/src/input.png" alt="input-box">
+            <input id="input-box" class="input-box" type="text">
+        </div>
+        <div id="skip-btn" class="btn hidden">skip</div>
+        <img id="btn1" class="btn" src="/src/btn3.png" alt="">
+        <img id="btn2" class="btn hidden" src="/src/btn4.png" alt="">
+        <img id="btn3" class="btn hidden" src="/src/btn3.png" alt="">
+        <img id="btn4" class="btn hidden" src="/src/btn4.png" alt="">
+        <img id="btn5" class="btn hidden" src="/src/btn5.png" alt="">
+        <div id="question-container" class="container hidden">
+            <div id="question"></div>
+            <div id="op-btn-container">
+                <button id="op-btn1" class="btn op-btn"></button>
+                <button id="op-btn2" class="btn op-btn"></button>
+                <button id="op-btn3" class="btn op-btn"></button>
+                <button id="op-btn4" class="btn op-btn hidden"></button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

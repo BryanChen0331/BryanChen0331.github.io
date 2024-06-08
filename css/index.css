@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "Cubic";
+    src: url("../src/俐方體.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: "Cubic", sans-serif;
+}
 html {
     width: 100%;
     height: 100%;
@@ -8,92 +17,164 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    background-color: rgb(0, 0, 50);
+    /* background-color: rgb(0, 0, 50); */
+    background-color: black;
+    font-family: "Cubic", sans-serif;
 }
 .container {
-    width: 515px;
-    margin: auto;
     display: flex;
+}
+#main-container {
+    width: 1080px;
+    /* width: 515px; */
+    margin: auto;
     position: relative;
     justify-content: center;
+    overflow: hidden;
 }
-#bg {
+#bg, #result {
     width: 100%;
 }
-#title {
-    width: 100%;
+#username {
     position: absolute;
-}
-#content-box {
-    display: none;
-    width: 80%;
-    height: 30%;
-    position: absolute;
-    top: 15%;
-    background-color: rgba(40, 140, 245, 0.8);
-    border-radius: 10px;
-}
-.text-box {
-    position: absolute;
-    font-weight: bold;
-}
-#content {
-    display: none;
-    width: 80%;
+    /* background-color: black; */
+    width: 40%;
+    color: rgb(92, 53, 3);
     font-size: 20px;
-    font-weight: bold;
-    line-height: 40px;
-    top: 20%;
-    left: 10%;
-}
-#character {
-    display: none;
-    width: 90%;
-    font-size: 25px;
     text-align: center;
-    top: 40%;
-    left: 5%;
+    top: 2%;
 }
-.btn {
+#mask, #cutscene {
     position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#cutscene-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 1;
+    animation-timing-function: ease;
+    z-index: 999;
+}
+.fadeInToBlack {
+    animation: fadeInToBlack 3s forwards;
+}
+.fadeOutFromBlack {
+    animation: fadeOutFromBlack 1.5s forwards;
+}
+@keyframes fadeInToBlack {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOutFromBlack {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#bubble {
+    position: absolute;
+    width: 100%;
+    animation: bubbleFloat 3s forwards;
+    animation-timing-function: ease-in;
+    z-index: 1000;
+}
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(162%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+#text {
+    position: absolute;
+    width: 60%;
+    top: 30%;
+}
+#input-container {
+    position: absolute;
+    width: 70%;
+    top: 40%;
+}
+#input-img {
+    width: 100%;
+}
+#input-box {
+    position: absolute;
+    width: 92%;
+    height: 74%;
+    margin: 2% 4%;
+    background: transparent;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 24px;
 }
 .btn:hover {
     cursor: pointer;
 }
-#start-btn {
+#skip-btn {
+    position: absolute;
+    font-size: 40px;
+    color: white;
+    top: 2%;
+    right: 2%;
+}
+#btn1, #btn2, #btn3 {
+    position: absolute;
     width: 43%;
-    height: 9%;
-    top: 71%;
-    background-image: url("../src/start-btn.png");
-    background-size: 233%;
-    background-position: 50% 79%;
+    top: 80%;
 }
-.option-btn {
-    display: none;
-    width: 65%;
-    height: 50px;
-    font-size: 12px;
-    border-radius: 10px;
-}
-#btn1 {
-    top: 55%;
-}
-#btn2 {
-    top: 65%;
-}
-#btn3 {
-    top: 75%;
+#btn4, #btn5 {
+    position: absolute;
+    width: 38%;
+    bottom: 2%;
 }
 #btn4 {
-    top: 85%;
+    left: 10%;
 }
-#restart-btn {
-    display: none;
-    width: 30%;
-    height: 10%;
-    bottom: 20%;
-    background-color: white;
+#btn5 {
+    right: 10%
+}
+#question-container {
+    position: absolute;
+    width: 95%;
+    flex-direction: column;
+    align-items: center;
+}
+.question-container-layout1 {
+    bottom: 5%;
+}
+.question-container-layout2 {
+    top: 5%;
+}
+#question {
+    color: white;
     font-size: 18px;
-    font-weight: bold;
-    border-radius: 10px;
+}
+#op-btn-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+.op-btn {
+    width: 100%;
+    height: 36px;
+    font-size: 12px;
+    border-radius: 12px;
+    margin: 1% 0;
+}
+.hidden {
+    display: none;
 }
