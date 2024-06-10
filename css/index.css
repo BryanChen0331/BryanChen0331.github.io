@@ -34,6 +34,7 @@ body {
 }
 #bg, #result {
     width: 100%;
+    opacity: 0;
 }
 #username {
     position: absolute;
