@@ -1,36 +1,5 @@
 import {questions} from "./questions.js";
 
-let currentQuestion = 0;
-let userName;
-let handleVideoEndedWrapper;
-
-const attributes = {
-    adventure: 0,
-    social: 0,
-    creativity: 0,
-    strategy: 0,
-    emotion: 0,
-    intuition: 0
-};
-
-function generateCharacter(attributes){
-    const attributeToCharacter = {
-        adventure: "/src/result1.png",
-        social: "/src/result2.png",
-        creativity: "/src/result3.png",
-        strategy: "/src/result4.png",
-        emotion: "/src/result5.png",
-        intuition: "/src/result6.png"
-    };
-
-    const max_value = Math.max(...Object.values(attributes));
-    const highest_attributes = Object.keys(attributes).filter(attr => attributes[attr] === max_value);
-    const selected_attribute = highest_attributes[Math.floor(Math.random() * highest_attributes.length)];
-    const characterImg = attributeToCharacter[selected_attribute];
-    
-    return characterImg;
-}
-
 window.onload = function(){
     const $bg = document.querySelector("#bg");
     const $result = document.querySelector("#result");
@@ -53,6 +22,37 @@ window.onload = function(){
     const $opBtn1 = document.querySelector("#op-btn1");
     const $opBtn3 = document.querySelector("#op-btn3");
     const $opBtn4 = document.querySelector("#op-btn4");
+
+    let currentQuestion = 0;
+    let userName;
+    let handleVideoEndedWrapper;
+
+    const attributes = {
+        adventure: 0,
+        social: 0,
+        creativity: 0,
+        strategy: 0,
+        emotion: 0,
+        intuition: 0
+    };
+
+    function generateCharacter(attributes){
+        const attributeToCharacter = {
+            adventure: "/src/result1.png",
+            social: "/src/result2.png",
+            creativity: "/src/result3.png",
+            strategy: "/src/result4.png",
+            emotion: "/src/result5.png",
+            intuition: "/src/result6.png"
+        };
+
+        const max_value = Math.max(...Object.values(attributes));
+        const highest_attributes = Object.keys(attributes).filter(attr => attributes[attr] === max_value);
+        const selected_attribute = highest_attributes[Math.floor(Math.random() * highest_attributes.length)];
+        const characterImg = attributeToCharacter[selected_attribute];
+        
+        return characterImg;
+    }
 
     function toggleVisibility(element){
         element.classList.toggle("hidden");
@@ -86,6 +86,7 @@ window.onload = function(){
             toggleVisibility($text);
             toggleVisibility($inputContainer);
             toggleVisibility($btn2);
+            $inputBox.style.fontSize = `${document.body.offsetWidth/18}px`;
         });
     }
 
@@ -99,6 +100,7 @@ window.onload = function(){
                 toggleVisibility($inputContainer);
                 toggleVisibility($skipBtn);
                 toggleVisibility($btn2);
+                $skipBtn.style.fontSize = `${document.body.offsetWidth/12}px`;
 
                 handleVideoEndedWrapper = function() {
                     fn3();
@@ -128,12 +130,17 @@ window.onload = function(){
             $opBtn3.innerText = questions[0].options[2].text;
             $questionContainer.classList.toggle("question-container-layout1");
             toggleVisibility($questionContainer);
+            $question.style.fontSize = `${document.body.offsetWidth/20}px`;
+            $opBtn1.style.fontSize = `${document.body.offsetWidth/27}px`;
+            $opBtn2.style.fontSize = `${document.body.offsetWidth/27}px`;
+            $opBtn3.style.fontSize = `${document.body.offsetWidth/27}px`;
+            $opBtn4.style.fontSize = `${document.body.offsetWidth/27}px`;
         });
     }
 
     function nextQuestion(option){
         toNextPage(() => {
-            $opBtn4.style.display = "none";
+            $opBtn4.classList.add("hidden");
 
             const {effect} = questions[currentQuestion].options[option];
             attributes[effect]++;
@@ -153,7 +160,7 @@ window.onload = function(){
 
             if (currentQuestion === 4){
                 $opBtn4.innerText = questions[currentQuestion].options[3].text;
-                $opBtn4.style.display = "block";
+                $opBtn4.classList.remove("hidden");
             }
 
             if (currentQuestion === 1){
@@ -181,6 +188,7 @@ window.onload = function(){
             toggleVisibility($btn3);
             toggleVisibility($btn4);
             toggleVisibility($btn5);
+            $userName.style.fontSize = `${document.body.offsetWidth/20}px`;
         });
     }
 
@@ -195,4 +203,14 @@ window.onload = function(){
     $opBtn2.addEventListener("click", () => nextQuestion(1));
     $opBtn3.addEventListener("click", () => nextQuestion(2));
     $opBtn4.addEventListener("click", () => nextQuestion(3));
+    window.addEventListener("resize", () => {
+        $userName.style.fontSize = `${document.body.offsetWidth/20}px`;
+        $inputBox.style.fontSize = `${document.body.offsetWidth/18}px`;
+        $question.style.fontSize = `${document.body.offsetWidth/20}px`;
+        $skipBtn.style.fontSize = `${document.body.offsetWidth/12}px`;
+        $opBtn1.style.fontSize = `${document.body.offsetWidth/27}px`;
+        $opBtn2.style.fontSize = `${document.body.offsetWidth/27}px`;
+        $opBtn3.style.fontSize = `${document.body.offsetWidth/27}px`;
+        $opBtn4.style.fontSize = `${document.body.offsetWidth/27}px`;
+    })
 }

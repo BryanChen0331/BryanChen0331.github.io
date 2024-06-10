@@ -40,14 +40,18 @@ body {
     /* background-color: black; */
     width: 40%;
     color: rgb(92, 53, 3);
-    font-size: 20px;
+    font-weight: bold;
     text-align: center;
-    top: 2%;
+    top: 2.5%;
+    z-index: 100;
 }
 #mask, #cutscene {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+#cutscene {
+    z-index: 1000;
 }
 #cutscene-bg {
     position: absolute;
@@ -56,7 +60,6 @@ body {
     background-color: black;
     opacity: 1;
     animation-timing-function: ease;
-    z-index: 999;
 }
 .fadeInToBlack {
     animation: fadeInToBlack 3s forwards;
@@ -85,7 +88,7 @@ body {
     width: 100%;
     animation: bubbleFloat 3s forwards;
     animation-timing-function: ease-in;
-    z-index: 1000;
+    z-index: 100;
 }
 @keyframes bubbleFloat {
     0% {
@@ -99,11 +102,13 @@ body {
     position: absolute;
     width: 60%;
     top: 30%;
+    z-index: 100;
 }
 #input-container {
     position: absolute;
     width: 70%;
     top: 40%;
+    z-index: 100;
 }
 #input-img {
     width: 100%;
@@ -118,27 +123,29 @@ body {
     border: none;
     outline: none;
     text-align: center;
-    font-size: 24px;
+    z-index: 100;
 }
 .btn:hover {
     cursor: pointer;
 }
 #skip-btn {
     position: absolute;
-    font-size: 40px;
     color: white;
     top: 2%;
     right: 2%;
+    z-index: 100;
 }
 #btn1, #btn2, #btn3 {
     position: absolute;
     width: 43%;
     top: 80%;
+    z-index: 100;
 }
 #btn4, #btn5 {
     position: absolute;
     width: 38%;
     bottom: 2%;
+    z-index: 100;
 }
 #btn4 {
     left: 10%;
@@ -151,6 +158,7 @@ body {
     width: 95%;
     flex-direction: column;
     align-items: center;
+    z-index: 100;
 }
 .question-container-layout1 {
     bottom: 5%;
@@ -160,7 +168,6 @@ body {
 }
 #question {
     color: white;
-    font-size: 18px;
 }
 #op-btn-container {
     width: 100%;
@@ -170,8 +177,6 @@ body {
 }
 .op-btn {
     width: 100%;
-    height: 36px;
-    font-size: 12px;
     border-radius: 12px;
     margin: 1% 0;
 }
