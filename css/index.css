@@ -36,6 +36,13 @@ body {
 #bg, #result {
     width: 100%;
 }
+#bg {
+    visibility: hidden;
+}
+#bgm {
+    width: 0;
+    height: 0;
+}
 #mask, #cutscene {
     position: absolute;
     width: 100%;
@@ -157,10 +164,9 @@ body {
     width: 100%;
 }
 #question-text {
-    color: white;
     position: absolute;
-    width: 92%;
-    margin: 3% 4%;
+    width: 86%;
+    margin: 12% 7%;
 }
 #op-btns-container {
     width: 100%;
