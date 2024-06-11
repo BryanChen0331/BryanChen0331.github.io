@@ -36,15 +36,6 @@ body {
 #bg, #result {
     width: 100%;
 }
-#username {
-    position: absolute;
-    /* background-color: black; */
-    width: 40%;
-    color: rgb(92, 53, 3);
-    font-weight: bold;
-    text-align: center;
-    top: 2%;
-}
 #mask, #cutscene {
     position: absolute;
     width: 100%;
@@ -61,10 +52,10 @@ body {
     animation-timing-function: ease;
 }
 .fadeInToBlack {
-    animation: fadeInToBlack 3s forwards;
+    animation: fadeInToBlack 0s forwards;
 }
 .fadeOutFromBlack {
-    animation: fadeOutFromBlack 1.5s forwards;
+    animation: fadeOutFromBlack 0s forwards;
 }
 @keyframes fadeInToBlack {
     0% {
@@ -85,7 +76,7 @@ body {
 #bubble {
     position: absolute;
     width: 100%;
-    animation: bubbleFloat 3s forwards;
+    animation: bubbleFloat 0s forwards;
     animation-timing-function: ease-in;
     z-index: 100;
 }

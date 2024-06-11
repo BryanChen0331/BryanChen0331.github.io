@@ -4,7 +4,7 @@ window.onload = function(){
     const $mainContainer = document.querySelector("#main-container");
     const $bg = document.querySelector("#bg");
     const $result = document.querySelector("#result");
-    const $userName = document.querySelector("#username");
+    const ctx = $result.getContext("2d");
     const $mask = document.querySelector("#mask")
     const $cutscene = document.querySelector("#cutscene");
     const $cutsceneBg = document.querySelector("#cutscene-bg");
@@ -193,17 +193,27 @@ window.onload = function(){
 
     function fn4(){
         const characterImg = generateCharacter(attributes);
-        $result.src = characterImg;
-        $userName.innerText = userName;
+
+        const img = new Image();
+        img.onload = () => {
+            $result.width = 1080;
+            $result.height = 1920;
+            ctx.drawImage(img, 0, 0);
+            ctx.font = "bold 54px Cubic";
+            ctx.fillStyle = "rgb(92, 53, 3)";
+            ctx.textAlign = "center";
+    
+            ctx.fillText(userName, 1080/2, 1920/24);
+        };
+    
+        img.src = characterImg;
 
         toNextPage(() => {
             toggleVisibility($bg);
             toggleVisibility($result);
-            toggleVisibility($userName);
             toggleVisibility($btn3);
             toggleVisibility($btn4);
             toggleVisibility($btn5);
-            $userName.style.fontSize = `${$mainContainer.offsetWidth/20}px`;
         });
     }
 
@@ -213,24 +223,33 @@ window.onload = function(){
     }
 
     function shareImage() {
-        fetch($result.src)
-            .then(response => response.blob())
-            .then(blob => {
-                const file = new File([blob], 'result.jpg', { type: 'image/jpeg' });
-                if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                    navigator.share({
-                        files: [file],
-                        title: 'result',
-                        text: 'result'
-                    }).then(() => {
-                        console.log('分享成功');
-                    }).catch((error) => {
-                        console.error('分享失败', error);
-                    });
-                } else {
-                    alert('此设备不支持文件分享');
-                }
+        const dataURL = $result.toDataURL('image/png');
+
+        function dataURLtoBlob(dataurl) {
+            let arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while(n--){
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new Blob([u8arr], {type:mime});
+        }
+        
+        const blob = dataURLtoBlob(dataURL);
+
+        const file = new File([blob], "result.png", { type: 'image/png' });
+
+        if (navigator.share) {
+            navigator.share({
+                title: "result",
+                files: [file],
+            }).then(() => {
+                console.log('Share was successful.');
+            }).catch((error) => {
+                console.log('Sharing failed', error);
             });
+        } else {
+            console.log('Web Share API is not supported in your browser.');
+        }
     }
 
     $bg.addEventListener("play", setBgAsBottomLayer);
@@ -247,7 +266,6 @@ window.onload = function(){
     $opBtn3.addEventListener("click", () => nextQuestion(2));
     $opBtn4.addEventListener("click", () => nextQuestion(3));
     window.addEventListener("resize", () => {
-        $userName.style.fontSize = `${$mainContainer.offsetWidth/20}px`;
         $inputBox.style.fontSize = `${$mainContainer.offsetWidth/18}px`;
         $questionFrame.style.height = `${$mainContainer.offsetWidth/4}px`;
         $questionText.style.fontSize = `${$mainContainer.offsetWidth/18}px`;
