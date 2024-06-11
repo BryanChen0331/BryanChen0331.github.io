@@ -17,7 +17,6 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    /* background-color: rgb(0, 0, 50); */
     background-color: black;
     font-family: "Cubic", sans-serif;
 }
@@ -26,15 +25,16 @@ body {
 }
 #main-container {
     width: 1080px;
-    /* width: 515px; */
     margin: auto;
     position: relative;
     justify-content: center;
     overflow: hidden;
 }
+.bg {
+    z-index: -1000;
+}
 #bg, #result {
     width: 100%;
-    z-index: -1000;
 }
 #username {
     position: absolute;
@@ -43,8 +43,7 @@ body {
     color: rgb(92, 53, 3);
     font-weight: bold;
     text-align: center;
-    top: 2.5%;
-    z-index: 100;
+    top: 2%;
 }
 #mask, #cutscene {
     position: absolute;
@@ -59,7 +58,6 @@ body {
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: 1;
     animation-timing-function: ease;
 }
 .fadeInToBlack {
@@ -103,15 +101,13 @@ body {
     position: absolute;
     width: 60%;
     top: 30%;
-    z-index: 100;
 }
 #input-container {
     position: absolute;
     width: 70%;
     top: 40%;
-    z-index: 100;
 }
-#input-img {
+.frame {
     width: 100%;
 }
 #input-box {
@@ -124,7 +120,6 @@ body {
     border: none;
     outline: none;
     text-align: center;
-    z-index: 100;
 }
 .btn:hover {
     cursor: pointer;
@@ -134,19 +129,16 @@ body {
     color: white;
     top: 2%;
     right: 2%;
-    z-index: 100;
 }
 #btn1, #btn2, #btn3 {
     position: absolute;
     width: 43%;
     top: 80%;
-    z-index: 100;
 }
 #btn4, #btn5 {
     position: absolute;
     width: 38%;
     bottom: 2%;
-    z-index: 100;
 }
 #btn4 {
     left: 10%;
@@ -154,12 +146,11 @@ body {
 #btn5 {
     right: 10%
 }
-#question-container {
+#question-op-container {
     position: absolute;
     width: 95%;
     flex-direction: column;
     align-items: center;
-    z-index: 100;
 }
 .question-container-layout1 {
     bottom: 5%;
@@ -167,19 +158,37 @@ body {
 .question-container-layout2 {
     top: 5%;
 }
-#question {
-    color: white;
+#question-container {
+    width: 100%;
+    display: flex;
 }
-#op-btn-container {
+#question-frame {
+    width: 100%;
+}
+#question-text {
+    color: white;
+    position: absolute;
+    width: 92%;
+    margin: 3% 4%;
+}
+#op-btns-container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 2%;
+    margin-top: 3%;
 }
 .op-btn {
+    margin: 1%;
+}
+.op-frame {
     width: 100%;
-    border-radius: 12px;
-    margin: 1% 0;
+    height: 100px;
+}
+.op-text {
+    position: absolute;
+    width: 92%;
+    margin: 2.5% 4%;
+    text-align: center;
 }
 .hidden {
     display: none;

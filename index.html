@@ -13,29 +13,44 @@
         <video id="bg" src="/src/bg1.mp4" autoplay muted loop playsinline></video>
         <img id="result" class="hidden" src="" alt="result">
         <div id="username" class="hidden"></div>
-        <img id="mask" class="hidden" src="/src/mask1.png" alt="">
+        <img id="mask" class="hidden" src="/src/mask1.png" alt="mask">
         <div id="cutscene" class="hidden">
             <div id="cutscene-bg"></div>
             <img id="bubble" src="/src/buble.png" alt="bubble">
         </div>
-        <img id="text" class="hidden" src="/src/text.png" alt="">
+        <img id="text" class="hidden" src="/src/text.png" alt="text">
         <div id="input-container" class="container hidden">
-            <img id="input-img" src="/src/input.png" alt="input-box">
+            <img class="frame" src="/src/frame.png" alt="input-frame">
             <input id="input-box" class="input-box" type="text">
         </div>
         <div id="skip-btn" class="btn hidden">skip</div>
-        <img id="btn1" class="btn" src="/src/btn3.png" alt="">
-        <img id="btn2" class="btn hidden" src="/src/btn4.png" alt="">
-        <img id="btn3" class="btn hidden" src="/src/btn3.png" alt="">
-        <img id="btn4" class="btn hidden" src="/src/btn4.png" alt="">
-        <img id="btn5" class="btn hidden" src="/src/btn5.png" alt="">
-        <div id="question-container" class="container hidden">
-            <div id="question"></div>
-            <div id="op-btn-container">
-                <button id="op-btn1" class="btn op-btn"></button>
-                <button id="op-btn2" class="btn op-btn"></button>
-                <button id="op-btn3" class="btn op-btn"></button>
-                <button id="op-btn4" class="btn op-btn hidden"></button>
+        <img id="btn1" class="btn" src="/src/btn3.png" alt="start-btm">
+        <img id="btn2" class="btn hidden" src="/src/btn4.png" alt="continue-btn">
+        <img id="btn3" class="btn hidden" src="/src/btn3.png" alt="generate-btn">
+        <img id="btn4" class="btn hidden" src="/src/btn4.png" alt="restart-btn">
+        <img id="btn5" class="btn hidden" src="/src/btn5.png" alt="save-image-btn">
+        <div id="question-op-container" class="container hidden">
+            <div id="question-container">
+                <img id="question-frame" src="/src/frame.png" alt="">
+                <div id="question-text"></div>
+            </div>
+            <div id="op-btns-container">
+                <div id="op-btn1" class="btn op-btn container">
+                    <img id="op-frame1" class="op-frame" src="/src/frame.png" alt="op-btn1-frame">
+                    <div id="op-text1" class="op-text"></div>
+                </div>
+                <div id="op-btn2" class="btn op-btn container">
+                    <img id="op-frame2" class="op-frame" src="/src/frame.png" alt="op-btn2-frame">
+                    <div id="op-text2" class="op-text"></div>
+                </div>
+                <div id="op-btn3" class="btn op-btn container">
+                    <img id="op-frame3" class="op-frame" src="/src/frame.png" alt="op-btn3-frame">
+                    <div id="op-text3" class="op-text"></div>
+                </div>
+                <div id="op-btn4" class="btn op-btn container hidden">
+                    <img id="op-frame4" class="op-frame" src="/src/frame.png" alt="op-btn4-frame">
+                    <div id="op-text4" class="op-text"></div>
+                </div>
             </div>
         </div>
     </div>
