@@ -199,11 +199,11 @@ window.onload = function(){
             $result.width = 1080;
             $result.height = 1920;
             ctx.drawImage(img, 0, 0);
-            ctx.font = "bold 54px Cubic";
+            ctx.font = "54px Cubic";
             ctx.fillStyle = "rgb(92, 53, 3)";
             ctx.textAlign = "center";
     
-            ctx.fillText(userName, 1080/2, 1920/24);
+            ctx.fillText(userName, 540, 90);
         };
     
         img.src = characterImg;
