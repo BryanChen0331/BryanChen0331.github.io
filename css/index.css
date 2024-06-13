@@ -83,16 +83,18 @@ body {
 #bubble {
     position: absolute;
     width: 150%;
-    transform: translateY(162%);
+    opacity: 0;
     animation: bubbleFloat 1s;
     animation-timing-function: ease-in;
     z-index: 100;
 }
 @keyframes bubbleFloat {
     0% {
+        opacity: 1;
         transform: translateY(162%);
     }
     100% {
+        opacity: 1;
         transform: translateY(-100%);
     }
 }
