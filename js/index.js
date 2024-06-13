@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function(){
     
     function toNextPage(callback){
         function handleFirstAnimationEndWrapper() {
-            $bgm3.play();
             $cutsceneBg.removeEventListener("animationend", handleFirstAnimationEndWrapper);
             $cutsceneBg.addEventListener('animationend', handleSecondAnimationEndWrapper);
             $cutsceneBg.classList.toggle("fadeInToBlack");
@@ -106,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function(){
         $cutsceneBg.addEventListener("animationend", handleFirstAnimationEndWrapper);
         $cutsceneBg.classList.toggle("fadeInToBlack");
         toggleVisibility($cutscene);
+        $bgm3.play();
     }
     
     function fn1(){
@@ -292,25 +292,25 @@ document.addEventListener("DOMContentLoaded", function(){
     $btn1.addEventListener("click", () => {
         $bgm1.play();
         $bgm2.play();
-        fn1();
+        $bgm2.onended = fn1();
     });
     $btn2.addEventListener("click", () => {
         $bgm2.play();
-        fn2();
+        $bgm2.onended = fn2();
     });
     $btn3.addEventListener("click", () => {
         $bgm5.play();
-        fn4();
+        $bgm5.onended = fn4();
     });
     $btn4.addEventListener("click", () => {
         $bgm2.play();
-        $bgm2.addEventListener("ended", () => {
+        $bgm2.onended = () => {
             window.location.reload();
-        });
+        };
     });
     $btn5.addEventListener("click", () => {
         $bgm2.play();
-        shareImage();
+        $bgm2.onended = shareImage();
     });
     $opBtn1.addEventListener("click", () => nextQuestion(0));
     $opBtn2.addEventListener("click", () => nextQuestion(1));
