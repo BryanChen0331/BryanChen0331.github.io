@@ -59,10 +59,10 @@ body {
     animation-timing-function: ease;
 }
 .fadeInToBlack {
-    animation: fadeInToBlack 3s forwards;
+    animation: fadeInToBlack 1s forwards;
 }
 .fadeOutFromBlack {
-    animation: fadeOutFromBlack 1.5s forwards;
+    animation: fadeOutFromBlack 1s forwards;
 }
 @keyframes fadeInToBlack {
     0% {
@@ -82,8 +82,9 @@ body {
 }
 #bubble {
     position: absolute;
-    width: 100%;
-    animation: bubbleFloat 3s forwards;
+    width: 150%;
+    transform: translateY(162%);
+    animation: bubbleFloat 1s;
     animation-timing-function: ease-in;
     z-index: 100;
 }

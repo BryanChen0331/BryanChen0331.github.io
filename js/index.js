@@ -285,4 +285,5 @@ document.addEventListener("DOMContentLoaded", function(){
 
     $bg.style.height = `${$bg.offsetWidth * 16 / 9}px`;
     $bg.style.visibility = "visible";
+    toggleVisibility($btn1);
 });
