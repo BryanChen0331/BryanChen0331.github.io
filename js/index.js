@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     function toNextPage(callback){
         function handleFirstAnimationEndWrapper() {
+            $bgm3.play();
             $cutsceneBg.removeEventListener("animationend", handleFirstAnimationEndWrapper);
             $cutsceneBg.addEventListener('animationend', handleSecondAnimationEndWrapper);
             $cutsceneBg.classList.toggle("fadeInToBlack");
@@ -105,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function(){
         $cutsceneBg.addEventListener("animationend", handleFirstAnimationEndWrapper);
         $cutsceneBg.classList.toggle("fadeInToBlack");
         toggleVisibility($cutscene);
-        $bgm3.play();
     }
     
     function fn1(){
