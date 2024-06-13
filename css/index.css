@@ -39,11 +39,14 @@ body {
 #bg {
     visibility: hidden;
 }
-#bgm {
-    width: 0;
-    height: 0;
+#sound {
+    position: absolute;
+    width: 10%;
+    top: 1%;
+    right: 2%;
+    z-index: 500;
 }
-#mask, #cutscene {
+#cutscene, #mask {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -83,22 +86,28 @@ body {
 #bubble {
     position: absolute;
     width: 150%;
+    left: -25%;
     opacity: 0;
-    animation: bubbleFloat 1s;
+    animation: bubbleFloat 1s backwards;
     animation-timing-function: ease-in;
     z-index: 100;
 }
 @keyframes bubbleFloat {
     0% {
         opacity: 1;
-        transform: translateY(162%);
+        transform: translateY(108%);
     }
     100% {
         opacity: 1;
         transform: translateY(-100%);
     }
 }
-#text {
+#text1 {
+    position: absolute;
+    width: 80%;
+    top: 60%;
+}
+#text2 {
     position: absolute;
     width: 60%;
     top: 30%;
@@ -122,6 +131,16 @@ body {
     outline: none;
     text-align: center;
 }
+#bar {
+    position: absolute;
+    width: 40%;
+}
+.bar-layout1 {
+    top: 5%
+}
+.bar-layout2 {
+    bottom: 5%;
+}
 .btn:hover {
     cursor: pointer;
 }
@@ -129,7 +148,8 @@ body {
     position: absolute;
     color: white;
     top: 2%;
-    right: 2%;
+    left: 2%;
+    z-index: 500;
 }
 #btn1, #btn2, #btn3 {
     position: absolute;
@@ -154,10 +174,10 @@ body {
     align-items: center;
 }
 .question-container-layout1 {
-    bottom: 5%;
+    bottom: 7%;
 }
 .question-container-layout2 {
-    top: 5%;
+    top: 7%;
 }
 #question-container {
     width: 100%;

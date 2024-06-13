@@ -3,15 +3,22 @@ import {questions} from "./questions.js";
 document.addEventListener("DOMContentLoaded", function(){
     const $mainContainer = document.querySelector("#main-container");
     const $bg = document.querySelector("#bg");
-    const $bgm = document.querySelector("#bgm");
+    const $bgm1 = document.querySelector("#bgm1");
+    const $bgm2 = document.querySelector("#bgm2");
+    const $bgm3 = document.querySelector("#bgm3");
+    const $bgm4 = document.querySelector("#bgm4");
+    const $bgm5 = document.querySelector("#bgm5");
+    const $sound = document.querySelector("#sound");
     const $result = document.querySelector("#result");
     const ctx = $result.getContext("2d");
     const $mask = document.querySelector("#mask")
     const $cutscene = document.querySelector("#cutscene");
     const $cutsceneBg = document.querySelector("#cutscene-bg");
-    const $text = document.querySelector("#text");
+    const $text1 = document.querySelector("#text1");
+    const $text2 = document.querySelector("#text2");
     const $inputContainer = document.querySelector("#input-container");
     const $inputBox = document.querySelector("#input-box");
+    const $bar = document.querySelector("#bar");
     const $skipBtn = document.querySelector("#skip-btn");
     const $btn1 = document.querySelector("#btn1");
     const $btn2 = document.querySelector("#btn2");
@@ -68,6 +75,16 @@ document.addEventListener("DOMContentLoaded", function(){
     function toggleVisibility(element){
         element.classList.toggle("hidden");
     }
+
+    function toggleMute() {
+        if ($bgm1.muted) {
+            $bgm1.muted = false;
+            $sound.src = "/src/sound1.png";
+        } else {
+            $bgm1.muted = true;
+            $sound.src = "/src/sound2.png";
+        }
+    }
     
     function toNextPage(callback){
         function handleFirstAnimationEndWrapper() {
@@ -88,14 +105,16 @@ document.addEventListener("DOMContentLoaded", function(){
         $cutsceneBg.addEventListener("animationend", handleFirstAnimationEndWrapper);
         $cutsceneBg.classList.toggle("fadeInToBlack");
         toggleVisibility($cutscene);
+        $bgm3.play();
     }
     
     function fn1(){
-        $bgm.play();
         toNextPage(() => {
             $bg.src = "/src/bg2.mp4";
+            toggleVisibility($text1);
             toggleVisibility($btn1);
-            toggleVisibility($text);
+            toggleVisibility($sound);
+            toggleVisibility($text2);
             toggleVisibility($inputContainer);
             toggleVisibility($btn2);
             $inputBox.style.fontSize = `${$mainContainer.offsetWidth/18}px`;
@@ -108,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function(){
             toNextPage(() => {
                 $bg.src = "/src/bg3.mp4";
                 $bg.loop = false;
-                toggleVisibility($text);
+                toggleVisibility($text2);
                 toggleVisibility($inputContainer);
                 toggleVisibility($skipBtn);
                 toggleVisibility($btn2);
@@ -135,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function(){
             $bg.loop = true;
             toggleVisibility($mask);
             toggleVisibility($skipBtn);
+            toggleVisibility($bar);
 
             $questionText.innerText = questions[0].question;
             $opText1.innerText = questions[0].options[0].text;
@@ -169,10 +189,16 @@ document.addEventListener("DOMContentLoaded", function(){
                 $opText1.innerText = questions[currentQuestion].options[0].text;
                 $opText2.innerText = questions[currentQuestion].options[1].text;
                 $opText3.innerText = questions[currentQuestion].options[2].text;
+                $bar.src = `/src/bar${currentQuestion+1}.png`;
             } else {
                 toggleVisibility($mask);
                 toggleVisibility($questionOpContainer);
+                toggleVisibility($bar);
+                $bgm1.pause();
+                toggleVisibility($sound);
+
                 toggleVisibility($btn3);
+                $bgm4.play();
             }
 
             if (currentQuestion === 4){
@@ -184,11 +210,15 @@ document.addEventListener("DOMContentLoaded", function(){
                 $mask.src = "/src/mask2.png";
                 $questionOpContainer.classList.toggle("question-container-layout1");
                 $questionOpContainer.classList.toggle("question-container-layout2");
+                $bar.classList.toggle("bar-layout1");
+                $bar.classList.toggle("bar-layout2");
             }
             if (currentQuestion === 3){
                 $mask.src = "/src/mask1.png";
                 $questionOpContainer.classList.toggle("question-container-layout1");
                 $questionOpContainer.classList.toggle("question-container-layout2");
+                $bar.classList.toggle("bar-layout1");
+                $bar.classList.toggle("bar-layout2");
             }
         });
     }
@@ -255,14 +285,33 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     $bg.addEventListener("play", setBgAsBottomLayer);
+    $sound.addEventListener("click", toggleMute);
     $skipBtn.addEventListener("click", () => {
         fn3();
     });
-    $btn1.addEventListener("click", fn1);
-    $btn2.addEventListener("click", fn2);
-    $btn3.addEventListener("click", fn4);
-    $btn4.addEventListener("click", () => window.location.reload());
-    $btn5.addEventListener("click", shareImage);
+    $btn1.addEventListener("click", () => {
+        $bgm1.play();
+        $bgm2.play();
+        fn1();
+    });
+    $btn2.addEventListener("click", () => {
+        $bgm2.play();
+        fn2();
+    });
+    $btn3.addEventListener("click", () => {
+        $bgm5.play();
+        fn4();
+    });
+    $btn4.addEventListener("click", () => {
+        $bgm2.play();
+        $bgm2.addEventListener("ended", () => {
+            window.location.reload();
+        });
+    });
+    $btn5.addEventListener("click", () => {
+        $bgm2.play();
+        shareImage();
+    });
     $opBtn1.addEventListener("click", () => nextQuestion(0));
     $opBtn2.addEventListener("click", () => nextQuestion(1));
     $opBtn3.addEventListener("click", () => nextQuestion(2));
@@ -285,5 +334,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     $bg.style.height = `${$bg.offsetWidth * 16 / 9}px`;
     $bg.style.visibility = "visible";
+    toggleVisibility($text1);
     toggleVisibility($btn1);
 });

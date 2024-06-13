@@ -11,18 +11,27 @@
 <body>
     <div id="main-container" class="container">
         <video id="bg" src="/src/bg1.mp4" autoplay muted loop playsinline></video>
-        <video id="bgm" src="/src/bgm.mp4" loop playsinline></video>
+        <div id="bgms">
+            <audio id="bgm1" src="/src/bgm1.MP3" loop></audio>
+            <audio id="bgm2" src="/src/bgm2.wav"></audio>
+            <audio id="bgm3" src="/src/bgm3.MP3"></audio>
+            <audio id="bgm4" src="/src/bgm4.aac"></audio>
+            <audio id="bgm5" src="/src/bgm5.wav"></audio>
+        </div>
+        <img id="sound" class="hidden" src="/src/sound1.png" alt="sound">
         <canvas id="result" class="hidden"></canvas>
-        <img id="mask" class="hidden" src="/src/mask1.png" alt="mask">
         <div id="cutscene" class="hidden">
             <div id="cutscene-bg" class="bg"></div>
             <img id="bubble" src="/src/buble.png" alt="bubble">
         </div>
-        <img id="text" class="hidden" src="/src/text.png" alt="text">
+        <img id="text1" class="hidden" src="/src/text1.png" alt="text1">
+        <img id="text2" class="hidden" src="/src/text2.png" alt="text2">
         <div id="input-container" class="container hidden">
             <img class="frame" src="/src/frame1.png" alt="input-frame">
             <input id="input-box" class="input-box" type="text">
         </div>
+        <img id="mask" class="hidden" src="/src/mask1.png" alt="mask">
+        <img id="bar" class="bar-layout1 hidden" src="/src/bar1.png" alt="bar">
         <div id="skip-btn" class="btn hidden">skip</div>
         <img id="btn1" class="btn hidden" src="/src/btn1.png" alt="start-btm">
         <img id="btn2" class="btn hidden" src="/src/btn2.png" alt="continue-btn">
