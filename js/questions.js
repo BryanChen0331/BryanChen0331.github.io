@@ -34,14 +34,14 @@ export const questions = [
         ]
     },
     {
-        "question": "你發現一隻小海馬被困在海藻中，無法脫身。",
+        "question": "你發現一隻小丑魚被困在海藻中，無法脫身。",
         "options": [
             {
                 "text": "毫不猶豫地衝上前去解救。",
                 "effect": "emotion"
             },
             {
-                "text": "與其他人合作，一起解救海馬。",
+                "text": "與其他人合作，一起解救小丑魚。",
                 "effect": "strategy"
             },
             {
@@ -106,7 +106,7 @@ export const questions = [
         ]
     },
     {
-        "question": "你必須面對一個危險的挑戰來保護海洋王國。",
+        "question": "你必須面對一個危險的挑戰來保護港動王國。",
         "options": [
             {
                 "text": "毫不猶豫地迎接挑戰，保護大家。",
@@ -123,7 +123,7 @@ export const questions = [
         ]
     },
     {
-        "question": "最後的挑戰來臨，你需要運用之前獲得的力量來重啟音樂之石，拯救海洋王國。",
+        "question": "最後的挑戰來臨，你需要運用之前獲得的力量來重啟音樂之石，拯救港動王國。",
         "options": [
             {
                 "text": "帶領大家完成最終的儀式。",

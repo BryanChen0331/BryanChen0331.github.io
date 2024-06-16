@@ -46,6 +46,12 @@ body {
     right: 2%;
     z-index: 500;
 }
+#team {
+    position: absolute;
+    width: 70%;
+    top: 37.5%;
+    z-index: 499;
+}
 #cutscene, #mask {
     position: absolute;
     width: 100%;
@@ -166,6 +172,12 @@ body {
 }
 #btn5 {
     right: 10%
+}
+#btn6 {
+    position: absolute;
+    width: 28%;
+    top: 54.5%;
+    z-index: 500;
 }
 #question-op-container {
     position: absolute;

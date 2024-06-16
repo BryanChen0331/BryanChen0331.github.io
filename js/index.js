@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const $bgm5 = document.querySelector("#bgm5");
     const $sound = document.querySelector("#sound");
     const $result = document.querySelector("#result");
+    const $team = this.documentElement.querySelector("#team");
     const ctx = $result.getContext("2d");
     const $mask = document.querySelector("#mask")
     const $cutscene = document.querySelector("#cutscene");
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const $btn3 = document.querySelector("#btn3");
     const $btn4 = document.querySelector("#btn4");
     const $btn5 = document.querySelector("#btn5");
+    const $btn6 = document.querySelector("#btn6");
     const $questionOpContainer = document.querySelector("#question-op-container");
     const $questionFrame = document.querySelector("#question-frame");
     const $questionText = document.querySelector("#question-text");
@@ -41,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const $opText3 = document.querySelector("#op-text3");
     const $opText4 = document.querySelector("#op-text4");
 
+    let isMuted = false;
     let currentQuestion = 0;
     let userName;
     let handleVideoEndedWrapper;
@@ -56,20 +59,20 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function generateCharacter(attributes){
         const attributeToCharacter = {
-            adventure: "/src/result1.png",
-            social: "/src/result2.png",
-            creativity: "/src/result3.png",
-            strategy: "/src/result4.png",
-            emotion: "/src/result5.png",
-            intuition: "/src/result6.png"
+            adventure: 1,
+            social: 2,
+            creativity: 3,
+            strategy: 4,
+            emotion: 5,
+            intuition: 6
         };
 
         const max_value = Math.max(...Object.values(attributes));
         const highest_attributes = Object.keys(attributes).filter(attr => attributes[attr] === max_value);
         const selected_attribute = highest_attributes[Math.floor(Math.random() * highest_attributes.length)];
-        const characterImg = attributeToCharacter[selected_attribute];
+        const characterCode = attributeToCharacter[selected_attribute];
         
-        return characterImg;
+        return characterCode;
     }
 
     function toggleVisibility(element){
@@ -77,12 +80,22 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     function toggleMute() {
-        if ($bgm1.muted) {
+        if (isMuted) {
             $bgm1.muted = false;
             $sound.src = "/src/sound1.png";
+            $bgm2.muted = false;
+            $bgm3.muted = false;
+            $bgm4.muted = false;
+            $bgm5.muted = false;
+            isMuted = false;
         } else {
             $bgm1.muted = true;
             $sound.src = "/src/sound2.png";
+            $bgm2.muted = true;
+            $bgm3.muted = true;
+            $bgm4.muted = true;
+            $bgm5.muted = true;
+            isMuted = true;
         }
     }
     
@@ -224,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     function fn4(){
-        const characterImg = generateCharacter(attributes);
+        const characterCode = generateCharacter(attributes);
 
         const img = new Image();
         img.onload = () => {
@@ -238,14 +251,23 @@ document.addEventListener("DOMContentLoaded", function(){
             ctx.fillText(userName, 540, 90);
         };
     
-        img.src = characterImg;
+        img.src = `/src/result${characterCode}.png`;
+
+        if ([2, 3, 6].includes(characterCode)) {
+            $team.src = "/src/team1.png";
+        } else {
+            $team.src = "/src/team2.png";
+        }
 
         toNextPage(() => {
+            $bgm4.pause();
             toggleVisibility($bg);
             toggleVisibility($result);
+            toggleVisibility($team);
             toggleVisibility($btn3);
             toggleVisibility($btn4);
             toggleVisibility($btn5);
+            toggleVisibility($btn6);
         });
     }
 
@@ -312,6 +334,11 @@ document.addEventListener("DOMContentLoaded", function(){
         $bgm2.play();
         $bgm2.onended = shareImage();
     });
+    $btn6.addEventListener("click", () => {
+        $bgm2.play();
+        toggleVisibility($team);
+        toggleVisibility($btn6);
+    });
     $opBtn1.addEventListener("click", () => nextQuestion(0));
     $opBtn2.addEventListener("click", () => nextQuestion(1));
     $opBtn3.addEventListener("click", () => nextQuestion(2));
@@ -332,6 +359,7 @@ document.addEventListener("DOMContentLoaded", function(){
         $opText4.style.fontSize = `${$mainContainer.offsetWidth/27}px`;
     });
 
+    $bgm3.volume = 0.5;
     $bg.style.height = `${$bg.offsetWidth * 16 / 9}px`;
     $bg.style.visibility = "visible";
     toggleVisibility($text1);
