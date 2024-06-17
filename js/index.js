@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     $btn1.addEventListener("click", () => {
         $bgm1.play();
-        $bgm2.play();
+        $bgm1.onended = $bgm2.play();
         $bgm2.onended = fn1();
     });
     $btn2.addEventListener("click", () => {
